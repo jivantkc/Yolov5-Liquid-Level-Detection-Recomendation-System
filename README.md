@@ -23,5 +23,5 @@ We labeled (Top, Level, Base) on each images using labelimg. Once images are rea
 
 
 <h2>Saving Images in SQL, AMAZON S3 and API</h2>
-<p>This APP can be used to create API for react app or mobile apps. Which will allow for mobile app development. Base64 images can be captured from mobile app can be sent to API and is stored in SQL database. The same image & the predicted image with detection both are saved in AMAZON S3 Image bucket
+<p>Created API which will allow for mobile app development. Base64 images can be captured from mobile app can be sent to API and is stored in SQL database. The same image & the predicted image with detection both are saved in AMAZON S3 Image bucket
 </p>
