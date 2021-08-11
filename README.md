@@ -1,3 +1,3 @@
-<h1>Flask App to predict % of drinks in a glass & Recommend food or drinks<h1>
-<h2>Flask, Yolo-v5, Content Based & Collaborative Recommendation system<h2>
+<h1>Flask App to predict % of drinks in a glass & Recommend food or drinks</h1>
+<h2>Flask, Yolo-v5, Content Based & Collaborative Recommendation system</h2>
 <p>This is our final capstone project for Computer Vision and Recommendation System. Here we have trained YOLOV5 Model to detect our custome objects.We trained our model to detect top of glass, level of drink and base of drink in a glass. Once these objects in image are detected we calculate the distance between top to base and base to level of drink to calculate the distance and predict the % of drinks. If % of drink is more than 50% then system recommends food using collaborative filtering and if its below 50% it recommends beers using content based filtering.</p>
