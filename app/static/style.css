@@ -1,0 +1,33 @@
+html,
+body {
+  height: 100%;
+}
+
+ 
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 55px;
+  margin: auto;
+}
+
+
+hr{
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+}
+
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.linkclass, a{
+  color:antiquewhite;
+}

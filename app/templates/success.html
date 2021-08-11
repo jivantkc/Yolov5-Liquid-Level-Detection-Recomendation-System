@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <title>Food Recommendation System with level detection</title>
+  </head>
+  <body>
+    
+       
+    <header>
+      <div class="p-3 bg-dark text-white">
+        <div class="container">
+          <nav class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="\" aria-label="Product">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
+            </a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Tour</a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Product</a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Features</a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Enterprise</a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Support</a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Pricing</a>
+            <a class="py-2 d-none d-md-inline-block linkclass" href="#">Cart</a>
+          </nav>
+
+ 
+          </div>
+        </div>
+      </div>
+       
+    </header> 
+
+
+    <main style="padding:30px">
+       
+
+
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h1 class="h3 mb-3 font-weight-normal">Predicted level is {{level.level}} % </h1>
+            <img src="/static/converted/image0.jpg" alt="" width="100%">
+           <br>
+           <br>
+
+            <button class="btn btn-outline-light" type="button" href="\">Process Another Image</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Since you have {{level.level}} % of Drink</h2>
+
+            {% if level.level > 49  %}
+        <h3>Let us Recommend some good food!</h3>
+        Your user id:{{level.user}}
+        <br>
+
+        
+        {% for i in level.recommendation %}
+       
+        <button class="btn btn-outline-secondary" type="button" style="float: left; margin:20px; font-size: 130%; clear: both;">{{i}}</button>
+       
+        
+        {% endfor %}  
+        {% else %}
+       <hr>
+       <h3>Your Current Beer Details</h3>
+       <div style="background-color:antiquewhite; display:inline-block;">
+        <table class="table table-hover">
+          <tr>
+           
+            <td scope="col" width="20%"><h5>Name</h5></td>
+            <td scope="col"  width="20%"><h5>Style</h5></td>
+            <td scope="col"  width="20%"><h5>Brewery</h5></td>
+            <td scope="col"><h5>Description</h5></td>
+          </tr>
+          <tr>
+        {% for key, value in level.currentbeer.items() %}
+         
+                <td> {{ value }} </td>
+          
+        {% endfor %}
+        </tr>
+         
+          
+        
+      </table>
+
+      <table class ="table">
+        <tr>
+          <td >Alcohol</td>
+          <td >Bitter</td>
+          <td  >Sweet</td>
+          <td >Sour</td>
+          <td  >Fruits</td>
+          <td >Hoppy</td>
+          <td  >Spices</td>
+          <td >Malty</td>
+
+         
+         
+        </tr>
+        <tr>
+      {% for key, value in level.cb_alcohol.items() %}
+    
+      
+       
+         
+         
+                <td> {{ value[0] }} </td>
+          
+        {% endfor %}
+      </tr>
+       
+        
+      
+    </table>
+
+
+
+  </div>
+<br><br>
+        <h3>Beer Similar to your selection </h3>
+       
+        <table class="table table-hover">
+          <tr>
+           
+            <td scope="col" width="20%"><h5>Name</h5></td>
+          <td scope="col"  width="20%"><h5>Style</h5></td>
+          <td scope="col"  width="20%"><h5>Brewery</h5></td>
+          <td scope="col"><h5>Description</h5></td>
+          </tr>
+        {% for table in level.recommendation %}
+           
+        
+          <tr>
+          {% for key, value in table.items() %}
+           
+                  <td> {{ value }} </td>
+            
+          {% endfor %}
+        </tr>
+         
+          
+        {% endfor %}
+      </table>
+        {% endif %}
+
+
+
+           </div>
+        </div>
+      </div>
+       
+ 
+
+      
+ 
+
+    </main>
+
+    <footer class="p-3 bg-dark text-white py-5 linkclass">
+            <div class="row">
+        <div class="col-12 col-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
+          <small class="d-block mb-3 text-muted">© 2021</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Cool stuff</a></li>
+            <li><a class="link-secondary" href="#">Random feature</a></li>
+            <li><a class="link-secondary" href="#">Team feature</a></li>
+            <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+            <li><a class="link-secondary" href="#">Another one</a></li>
+            <li><a class="link-secondary" href="#">Last time</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Resource name</a></li>
+            <li><a class="link-secondary" href="#">Resource</a></li>
+            <li><a class="link-secondary" href="#">Another resource</a></li>
+            <li><a class="link-secondary" href="#">Final resource</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Business</a></li>
+            <li><a class="link-secondary" href="#">Education</a></li>
+            <li><a class="link-secondary" href="#">Government</a></li>
+            <li><a class="link-secondary" href="#">Gaming</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Team</a></li>
+            <li><a class="link-secondary" href="#">Locations</a></li>
+            <li><a class="link-secondary" href="#">Privacy</a></li>
+            <li><a class="link-secondary" href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+
+ 
+    
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('#inputfile').bind('change', function() {
+          let fileSize = this.files[0].size/1024/1024; // this gives in MB
+          if (fileSize > 1) {
+            $("#inputfile").val(null);
+            alert('file is too big. images more than 1MB are not allowed')
+            return
+          }
+
+          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+          if($.inArray(ext, ['jpg','jpeg']) == -1) {
+            $("#inputfile").val(null);
+            alert('only jpeg/jpg files are allowed!');
+          }
+      });
+    </script>
+  </body>
+</html>
+
+
